@@ -57,7 +57,7 @@
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
-          <li><a class="nav-link scrollto " href="#more-services">Courses</a></li>
+          <!-- <li><a class="nav-link scrollto " href="#more-services">Courses</a></li> -->
          
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <!-- <li><a class="getstarted scrollto" href="#about">Get Started</a></li> -->
@@ -222,11 +222,10 @@
     </section><!-- End Services Section -->
 
     <!-- ======= More Services Section ======= -->
-    <section id="more-services" class="more-services">
+    <!-- <section id="more-services" class="more-services">
       <div class="container">
         <div class="section-title" data-aos="fade-up">
           <h2>Courses</h2>
-          <!-- <p>Magnam dolores commodi suscipit eius consequatur ex aliquid fug</p> -->
         </div>
         <div class="row">
           <div class="col-md-4 d-flex align-items-stretch">
@@ -341,8 +340,7 @@
         </div>
 
       </div>
-    </section><!-- End More Services Section -->
-
+    </section> -->
 
 
 
@@ -376,17 +374,17 @@
           <div class="col-lg-3 col-md-6 mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="200">
             <div class="info">
               <div>
-                <i class="ri-map-pin-line"></i>
-                <p>A108 Adam Street<br>New York, NY 535022</p>
+                <i class="bi bi-geo-alt"></i>
+                <p>Alakode<br>Kannur , Kerala</p>
               </div>
 
               <div>
-                <i class="ri-mail-send-line"></i>
-                <p>info@example.com</p>
+                <i class="bi bi-envelope"></i>
+                <p>info@nads.co.in</p>
               </div>
 
               <div>
-                <i class="ri-phone-line"></i>
+                <i class="bi bi-telephone"></i>
                 <p>+91 9061563297</p>
               </div>
 
@@ -394,16 +392,14 @@
           </div>
 
           <div class="col-lg-5 col-md-12" data-aos="fade-up" data-aos-delay="300">
-            <form action="#" method="post" role="form" class="php-email-form">
+            <form action="#" method="post" role="form" class="php-email-form" id="contact-form">
               <div class="form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                <input type="number" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
               </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
-              </div>
+             
               <div class="form-group">
                 <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
               </div>
@@ -445,8 +441,11 @@
     </div>
   </footer><!-- End Footer -->
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a> -->
+      <a href="https://api.whatsapp.com/send?phone=919061563297&amp;text=Hello" style="cursor:pointer;position:fixed;width:50px;height:50px;bottom:30px;right:25px;background:#25d366;color:white;border-radius:50px;text-align:center;font-size:32px;z-index:999;">
+        <span style="margin:auto"> <i class="bi bi-whatsapp"></i></span>
+      </a>
 
   <!-- Vendor JS Files -->
   <!-- <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script> -->
@@ -458,7 +457,34 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('#contact-form').submit(function(event) {
+        event.preventDefault(); // Prevent form submission
 
+        // Get form data
+        var formData = $(this).serialize();
+
+        // Send AJAX request
+        $.ajax({
+            url: '/contact-form.php',
+            type: 'POST',
+            data: formData,
+            success: function(response) {
+                // Handle success response
+                location.reload();
+                // Optionally, display a success message to the user
+            },
+            error: function(xhr, status, error) {
+                // Handle error response
+                location.reload();
+                // Optionally, display an error message to the user
+            }
+        });
+    });
+});
+
+        </script>
 </body>
 
 </html>
